@@ -2,6 +2,7 @@ package modelo.propietario;
 
 public class Propietario {
 	
+	private static Integer contadorCod = 0;
 	private Integer codPropietario;  //En caso de que se use en BBDD y sea autoincrementable eliminamos este campo
 	private Finca finca;
 	private String nombrePropietario;
@@ -9,12 +10,13 @@ public class Propietario {
 	
 	public Propietario() {
 		super();
+		contadorCod ++;
+		codPropietario = new Integer(contadorCod);
 	}
 
-	public Propietario(Integer codPropietario, Finca finca,
+	public Propietario(Finca finca,
 			String nombrePropietario, String apellidosPropietario) {
-		super();
-		this.codPropietario = codPropietario;
+		this();
 		this.finca = finca;
 		this.nombrePropietario = nombrePropietario;
 		this.apellidosPropietario = apellidosPropietario;
@@ -23,11 +25,7 @@ public class Propietario {
 	public Integer getCodPropietario() {
 		return codPropietario;
 	}
-
-	public void setCodPropietario(Integer codPropietario) {
-		this.codPropietario = codPropietario;
-	}
-
+	
 	public Finca getFinca() {
 		return finca;
 	}
