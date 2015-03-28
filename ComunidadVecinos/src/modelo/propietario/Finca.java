@@ -76,8 +76,7 @@ public class Finca {
 
 	@Override
 	public String toString() {
-		return "Finca [planta=" + planta + ", puerta=" + puerta
-				+ ", superficie=" + superficie + "]";
+		return "Planta " + this.planta + ", Puerta " + this.puerta + ", superficie: " + this.superficie;
 	}
 	
 	

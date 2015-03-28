@@ -77,9 +77,9 @@ public class Propietario {
 
 	@Override
 	public String toString() {
-		return "Propietario [codPropietario=" + codPropietario + ", finca="
-				+ finca + ", nombrePropietario=" + nombrePropietario
-				+ ", apellidosPropietario=" + apellidosPropietario + "]";
+		return "Codigo: " + codPropietario + "\nFinca: "
+				+ finca + "\nNombre: " + nombrePropietario
+				+ "\nApellidos: " + apellidosPropietario + "\n";
 	}
 	
 	

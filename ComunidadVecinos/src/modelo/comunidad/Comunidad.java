@@ -91,10 +91,16 @@ public class Comunidad {
 
 	@Override
 	public String toString() {
-		return "Comunidad [nombreEdificio=" + nombreEdificio + ", direccion="
-				+ direccion + ", poblacion=" + poblacion + ", codigoPostal="
-				+ codigoPostal + ", provincia=" + provincia + ", propietarios="
-				+ propietarios + ", cuentaBanco=" + cuentaBanco + "]";
+		String cadenaPropietarios = new String();
+		for(Propietario p : propietarios){
+			cadenaPropietarios += "\n\tCodigo: " + p.getCodPropietario() + "\n\tFinca: "
+					+ p.getFinca() + "\n\tNombre: " + p.getNombrePropietario()
+					+ "\n\tApellidos: " + p.getApellidosPropietario() + "\n";
+		}
+		return "Nombre Edificio: " + nombreEdificio + "\nDireccion: "
+				+ direccion + "\nPoblacion: " + poblacion + "\nCodigo Postal: "
+				+ codigoPostal + "\nProvincia: " + provincia + "\nPropietarios:\n"
+				+ cadenaPropietarios + "\nCuenta Banco: " + cuentaBanco;
 	}
 
 	@Override
