@@ -3,10 +3,14 @@ package modelo.bancario;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table (name = "CUENTA_BANCO")
 public class CuentaBanco implements Serializable{
 	/**
 	 * 

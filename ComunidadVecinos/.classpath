@@ -14,5 +14,10 @@
 	<classpathentry kind="lib" path="C:/Users/Fran Romero/Downloads/Referencias Librerias/jboss-logging-annotations-1.2.0.Beta1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Fran Romero/Downloads/Referencias Librerias/jboss-transaction-api_1.2_spec-1.0.0.Final.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Fran Romero/Downloads/Referencias Librerias/mysql-connector-java-5.1.26-bin.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JPA">
+		<attributes>
+			<attribute name="owner.project.facets" value="jpt.jpa"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
