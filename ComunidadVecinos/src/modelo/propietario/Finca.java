@@ -1,22 +1,36 @@
 package modelo.propietario;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "FINCA")
 public class Finca {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name="ID_FINCA")
+	private Integer idFinca;
+	
+	@Column(name = "PLANTA")
 	private Integer planta;
+	
+	@Column(name = "PUERTA")
 	private Character puerta;
-	private Float superficie;
-	
-	
-	
+
 	public Finca() {
 		super();
 	}
 
-	public Finca(int planta, char puerta, float superficie) {
+	public Finca(int planta, char puerta) {
 		super();
 		this.planta = planta;
 		this.puerta = puerta;
-		this.superficie = superficie;
+		
 	}
 	
 	public int getPlanta() {
@@ -35,20 +49,27 @@ public class Finca {
 		this.puerta = puerta;
 	}
 
-	public float getSuperficie() {
-		return superficie;
+	public Integer getIdFinca() {
+		return idFinca;
 	}
 
-	public void setSuperficie(float superficie) {
-		this.superficie = superficie;
+	public void setIdFinca(Integer idFinca) {
+		this.idFinca = idFinca;
+	}
+
+	public void setPlanta(Integer planta) {
+		this.planta = planta;
+	}
+
+	public void setPuerta(Character puerta) {
+		this.puerta = puerta;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((planta == null) ? 0 : planta.hashCode());
-		result = prime * result + ((puerta == null) ? 0 : puerta.hashCode());
+		result = prime * result + ((idFinca == null) ? 0 : idFinca.hashCode());
 		return result;
 	}
 
@@ -61,23 +82,21 @@ public class Finca {
 		if (getClass() != obj.getClass())
 			return false;
 		Finca other = (Finca) obj;
-		if (planta == null) {
-			if (other.planta != null)
+		if (idFinca == null) {
+			if (other.idFinca != null)
 				return false;
-		} else if (!planta.equals(other.planta))
-			return false;
-		if (puerta == null) {
-			if (other.puerta != null)
-				return false;
-		} else if (!puerta.equals(other.puerta))
+		} else if (!idFinca.equals(other.idFinca))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Planta " + this.planta + ", Puerta " + this.puerta + ", superficie: " + this.superficie;
+		return "Finca [idFinca=" + idFinca + ", planta=" + planta + ", puerta="
+				+ puerta + "]";
 	}
+
+	
 	
 	
 }

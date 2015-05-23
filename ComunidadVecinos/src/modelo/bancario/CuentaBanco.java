@@ -1,9 +1,30 @@
 package modelo.bancario;
 
-public class CuentaBanco {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class CuentaBanco implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2939801543035189756L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column (name="ID_CUENTA_BANCO")
+	private Integer idCuentaBanco;
+	
+	@Column (name="NOMBRE")
 	private String nombreBanco;
+	
+	@Column (name="SUCURSAL")
 	private String sucursal;
+	
+	@Column (name="NUMERO_CUENTA")
 	private String numeroCuenta;
 	
 	public CuentaBanco() {
@@ -18,6 +39,14 @@ public class CuentaBanco {
 	}
 	
 	
+
+	public Integer getIdCuentaBanco() {
+		return idCuentaBanco;
+	}
+
+	public void setIdCuentaBanco(Integer idCuentaBanco) {
+		this.idCuentaBanco = idCuentaBanco;
+	}
 
 	public String getNombreBanco() {
 		return nombreBanco;
@@ -48,7 +77,7 @@ public class CuentaBanco {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((numeroCuenta == null) ? 0 : numeroCuenta.hashCode());
+				+ ((idCuentaBanco == null) ? 0 : idCuentaBanco.hashCode());
 		return result;
 	}
 
@@ -61,19 +90,20 @@ public class CuentaBanco {
 		if (getClass() != obj.getClass())
 			return false;
 		CuentaBanco other = (CuentaBanco) obj;
-		if (numeroCuenta == null) {
-			if (other.numeroCuenta != null)
+		if (idCuentaBanco == null) {
+			if (other.idCuentaBanco != null)
 				return false;
-		} else if (!numeroCuenta.equals(other.numeroCuenta))
+		} else if (!idCuentaBanco.equals(other.idCuentaBanco))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CuentaBanco [nombreBanco=" + nombreBanco + ", sucursal="
-				+ sucursal + ", numeroCuenta=" + numeroCuenta + "]";
+		return "CuentaBanco [idCuentaBanco=" + idCuentaBanco + ", nombreBanco="
+				+ nombreBanco + ", sucursal=" + sucursal + ", numeroCuenta="
+				+ numeroCuenta + "]";
 	}
-	
+
 	
 }

@@ -1,18 +1,57 @@
 package modelo.comunidad;
 
+import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import modelo.bancario.CuentaBanco;
 import modelo.propietario.Propietario;
 
-public class Comunidad {
+@Entity
+@Table(name = "COMUNIDAD")
+public class Comunidad implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2881126122273086720L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
+	@Column (name="ID_COMUNIDAD")
+	private Integer idComunidad;
+	
+	@Column (name="NOMBRE_EDIFICIO")
 	private String nombreEdificio;
+	
+	@Column (name="DIRECCION")
 	private String direccion ;
+	
+	@Column (name="POBLACION")
 	private String poblacion;
+	
+	@Column (name="CODIGO_POSTAL")
 	private String codigoPostal;
+	
+	@Column (name="PROVINCIA")
 	private String provincia;
+	
+	@OneToMany(mappedBy = "comunidad",cascade=CascadeType.ALL)
 	private List<Propietario> propietarios;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_CUENTA_BANCO")
 	private CuentaBanco cuentaBanco;
 	
 	public Comunidad() {
@@ -31,6 +70,14 @@ public class Comunidad {
 		this.provincia = provincia;
 		this.propietarios = propietarios;
 		this.cuentaBanco = cuentaBanco;
+	}
+
+	public Integer getIdComunidad() {
+		return idComunidad;
+	}
+
+	public void setIdComunidad(Integer idComunidad) {
+		this.idComunidad = idComunidad;
 	}
 
 	public String getNombreEdificio() {
@@ -90,37 +137,11 @@ public class Comunidad {
 	}
 
 	@Override
-	public String toString() {
-		String cadenaPropietarios = new String();
-		for(Propietario p : propietarios){
-			cadenaPropietarios += "\n\tCodigo: " + p.getCodPropietario() + "\n\tFinca: "
-					+ p.getFinca() + "\n\tNombre: " + p.getNombrePropietario()
-					+ "\n\tApellidos: " + p.getApellidosPropietario() + "\n";
-		}
-		return "Nombre Edificio: " + nombreEdificio + "\nDireccion: "
-				+ direccion + "\nPoblacion: " + poblacion + "\nCodigo Postal: "
-				+ codigoPostal + "\nProvincia: " + provincia + "\nPropietarios:\n"
-				+ cadenaPropietarios + "\nCuenta Banco: " + cuentaBanco;
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((codigoPostal == null) ? 0 : codigoPostal.hashCode());
-		result = prime * result
-				+ ((cuentaBanco == null) ? 0 : cuentaBanco.hashCode());
-		result = prime * result
-				+ ((direccion == null) ? 0 : direccion.hashCode());
-		result = prime * result
-				+ ((nombreEdificio == null) ? 0 : nombreEdificio.hashCode());
-		result = prime * result
-				+ ((poblacion == null) ? 0 : poblacion.hashCode());
-		result = prime * result
-				+ ((propietarios == null) ? 0 : propietarios.hashCode());
-		result = prime * result
-				+ ((provincia == null) ? 0 : provincia.hashCode());
+				+ ((idComunidad == null) ? 0 : idComunidad.hashCode());
 		return result;
 	}
 
@@ -133,43 +154,24 @@ public class Comunidad {
 		if (getClass() != obj.getClass())
 			return false;
 		Comunidad other = (Comunidad) obj;
-		if (codigoPostal == null) {
-			if (other.codigoPostal != null)
+		if (idComunidad == null) {
+			if (other.idComunidad != null)
 				return false;
-		} else if (!codigoPostal.equals(other.codigoPostal))
-			return false;
-		if (cuentaBanco == null) {
-			if (other.cuentaBanco != null)
-				return false;
-		} else if (!cuentaBanco.equals(other.cuentaBanco))
-			return false;
-		if (direccion == null) {
-			if (other.direccion != null)
-				return false;
-		} else if (!direccion.equals(other.direccion))
-			return false;
-		if (nombreEdificio == null) {
-			if (other.nombreEdificio != null)
-				return false;
-		} else if (!nombreEdificio.equals(other.nombreEdificio))
-			return false;
-		if (poblacion == null) {
-			if (other.poblacion != null)
-				return false;
-		} else if (!poblacion.equals(other.poblacion))
-			return false;
-		if (propietarios == null) {
-			if (other.propietarios != null)
-				return false;
-		} else if (!propietarios.equals(other.propietarios))
-			return false;
-		if (provincia == null) {
-			if (other.provincia != null)
-				return false;
-		} else if (!provincia.equals(other.provincia))
+		} else if (!idComunidad.equals(other.idComunidad))
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Comunidad [idComunidad=" + idComunidad + ", nombreEdificio="
+				+ nombreEdificio + ", direccion=" + direccion + ", poblacion="
+				+ poblacion + ", codigoPostal=" + codigoPostal + ", provincia="
+				+ provincia + ", propietarios=" + propietarios
+				+ ", cuentaBanco=" + cuentaBanco + "]";
+	}
+
+	
 	
 	
 }

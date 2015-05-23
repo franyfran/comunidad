@@ -22,10 +22,8 @@ public class PropietarioUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Introduzca la superficie");
-		Float superficie = teclado.nextFloat();
 		
-		Finca finca = new Finca(planta, puerta, superficie);
+		Finca finca = new Finca(planta, puerta);
 		
 		Propietario propietario = new Propietario(finca, nombrePropietario, apellidosPropietario);
 		System.out.println(propietario);
