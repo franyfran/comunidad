@@ -1,42 +1,28 @@
 package vista.frame;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modelo.bancario.Banco;
 import modelo.dao.BancoDAO;
 
-public class BancoForm {
+public class BancoForm extends JPanel{
 
-	private JFrame frame;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5125990378766119597L;
 	private JTextField tfNombre;
 	private JTextField tfSucursal;
 	private JTextField tfCuenta;
 	private JButton btnCancelar;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BancoForm window = new BancoForm();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -49,40 +35,37 @@ public class BancoForm {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Alta Banco");
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-
+		this.setBounds(100, 100, 450, 300);
+		this.setLayout(null);
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setBounds(10, 20, 115, 20);
-		frame.getContentPane().add(lblNewLabel);
+		this.add(lblNewLabel);
 
 		JLabel label = new JLabel("Sucursal:");
 		label.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label.setBounds(10, 55, 115, 20);
-		frame.getContentPane().add(label);
+		this.add(label);
 
 		JLabel label_1 = new JLabel("Nº de Cuenta:");
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_1.setBounds(10, 90, 115, 20);
-		frame.getContentPane().add(label_1);
+		this.add(label_1);
 
 		tfNombre = new JTextField();
 		tfNombre.setBounds(130, 20, 194, 20);
-		frame.getContentPane().add(tfNombre);
+		this.add(tfNombre);
 		tfNombre.setColumns(10);
 
 		tfSucursal = new JTextField();
 		tfSucursal.setColumns(10);
 		tfSucursal.setBounds(130, 55, 194, 20);
-		frame.getContentPane().add(tfSucursal);
+		this.add(tfSucursal);
 
 		tfCuenta = new JTextField();
 		tfCuenta.setColumns(10);
 		tfCuenta.setBounds(130, 90, 194, 20);
-		frame.getContentPane().add(tfCuenta);
+		this.add(tfCuenta);
 
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -91,7 +74,7 @@ public class BancoForm {
 		});
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCancelar.setBounds(110, 171, 90, 25);
-		frame.getContentPane().add(btnCancelar);
+		this.add(btnCancelar);
 
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
@@ -114,8 +97,6 @@ public class BancoForm {
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAceptar.setBounds(234, 171, 90, 25);
-		frame.getContentPane().add(btnAceptar);
-
-		frame.setLocationRelativeTo(null);
+		this.add(btnAceptar);
 	}
 }

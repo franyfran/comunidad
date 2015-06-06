@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import modelo.bancario.Banco;
@@ -18,9 +19,12 @@ import modelo.comunidad.Comunidad;
 import modelo.dao.BancoDAO;
 import modelo.dao.ComunidadDAO;
 
-public class ComunidadForm {
+public class ComunidadForm extends JPanel implements ActionListener{
 
-	private JFrame frame;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 32052937542943884L;
 	private JTextField nombreEdificio;
 	private JTextField nombreCalle;
 	private JTextField numero;
@@ -29,22 +33,6 @@ public class ComunidadForm {
 	private JTextField codigoPostal;
 	private JTextField provincia;
 	private JComboBox<Banco> listaBancos;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ComunidadForm window = new ComunidadForm();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -57,45 +45,43 @@ public class ComunidadForm {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Crear Comunidad");
-		frame.setBounds(100, 100, 450, 350);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		this.setBounds(100, 100, 450, 350);
+		this.setLayout(null);
 
 		JLabel label = new JLabel("Nombre de Edificio:");
 		label.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label.setBounds(10, 20, 115, 20);
-		frame.getContentPane().add(label);
+		this.add(label);
 
 		JLabel lblCalle = new JLabel("Calle:");
 		lblCalle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCalle.setBounds(10, 55, 115, 20);
-		frame.getContentPane().add(lblCalle);
+		this.add(lblCalle);
 
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNmero.setBounds(10, 90, 115, 20);
-		frame.getContentPane().add(lblNmero);
+		this.add(lblNmero);
 
 		JLabel lblPlantaPuerta = new JLabel("Puerta:");
 		lblPlantaPuerta.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPlantaPuerta.setBounds(10, 125, 115, 20);
-		frame.getContentPane().add(lblPlantaPuerta);
+		this.add(lblPlantaPuerta);
 
 		JLabel lblPoblacin = new JLabel("Poblaci\u00F3n:");
 		lblPoblacin.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblPoblacin.setBounds(10, 160, 115, 20);
-		frame.getContentPane().add(lblPoblacin);
+		this.add(lblPoblacin);
 
 		JLabel lblCdigoPostal = new JLabel("C\u00F3digo Postal:");
 		lblCdigoPostal.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCdigoPostal.setBounds(10, 195, 115, 20);
-		frame.getContentPane().add(lblCdigoPostal);
+		this.add(lblCdigoPostal);
 
 		JLabel lblProvincia = new JLabel("Provincia:");
 		lblProvincia.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblProvincia.setBounds(10, 230, 115, 20);
-		frame.getContentPane().add(lblProvincia);
+		this.add(lblProvincia);
 
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
@@ -134,63 +120,58 @@ public class ComunidadForm {
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAceptar.setBounds(335, 195, 90, 25);
-		frame.getContentPane().add(btnAceptar);
+		this.add(btnAceptar);
 
 		nombreEdificio = new JTextField();
 		nombreEdificio.setBounds(130, 20, 194, 20);
-		frame.getContentPane().add(nombreEdificio);
+		this.add(nombreEdificio);
 		nombreEdificio.setColumns(10);
 
 		nombreCalle = new JTextField();
 		nombreCalle.setColumns(10);
 		nombreCalle.setBounds(130, 55, 194, 20);
-		frame.getContentPane().add(nombreCalle);
+		this.add(nombreCalle);
 
 		numero = new JTextField();
 		numero.setColumns(10);
 		numero.setBounds(130, 90, 194, 20);
-		frame.getContentPane().add(numero);
+		this.add(numero);
 
 		puerta = new JTextField();
 		puerta.setColumns(10);
 		puerta.setBounds(130, 125, 194, 20);
-		frame.getContentPane().add(puerta);
+		this.add(puerta);
 
 		poblacion = new JTextField();
 		poblacion.setColumns(10);
 		poblacion.setBounds(130, 160, 194, 20);
-		frame.getContentPane().add(poblacion);
+		this.add(poblacion);
 
 		codigoPostal = new JTextField();
 		codigoPostal.setColumns(10);
 		codigoPostal.setBounds(130, 195, 194, 20);
-		frame.getContentPane().add(codigoPostal);
+		this.add(codigoPostal);
 
 		provincia = new JTextField();
 		provincia.setColumns(10);
 		provincia.setBounds(130, 230, 194, 20);
-		frame.getContentPane().add(provincia);
+		this.add(provincia);
 
 		JLabel lblBanco = new JLabel("Banco:");
 		lblBanco.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblBanco.setBounds(10, 268, 115, 20);
-		frame.getContentPane().add(lblBanco);
+		this.add(lblBanco);
 
 		listaBancos = new JComboBox<Banco>();
 		listaBancos.setBounds(130, 268, 194, 20);
 		this.cargarComboBancos();
-		frame.getContentPane().add(listaBancos);
+		this.add(listaBancos);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCancelar.addActionListener(this);
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCancelar.setBounds(335, 244, 90, 25);
-		frame.getContentPane().add(btnCancelar);
-
-		frame.setLocationRelativeTo(null);
+		this.add(btnCancelar);
 	}
 
 	private void cargarComboBancos() {
@@ -201,5 +182,12 @@ public class ComunidadForm {
 				listaBancos.addItem(banco);
 			}
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		this.setVisible(false);
+		this.revalidate();
+		
 	}
 }

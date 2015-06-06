@@ -1,5 +1,6 @@
 package vista.frame;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -9,6 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 public class VentanaPrincipal implements ActionListener{
 
@@ -23,6 +26,7 @@ public class VentanaPrincipal implements ActionListener{
 	private JMenuItem mntmConsultarCuotas;
 	private JMenuItem mntmCrearPropietario;
 	private JMenuItem mntmConsultarPropietarios;
+	private JPanel panel;
 	/**
 	 * Launch the application.
 	 */
@@ -51,7 +55,7 @@ public class VentanaPrincipal implements ActionListener{
 	 */
 	private void initialize() {
 		frame = new JFrame("Ventana Principal");
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 450, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		
@@ -123,20 +127,27 @@ public class VentanaPrincipal implements ActionListener{
 		menuBar.add(mnInformes);
 		
 		JMenu mnAyuda = new JMenu("Ayuda");
-		menuBar.add(mnAyuda);
+		menuBar.add(mnAyuda);		
+		
+		panel = new Background();
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.repaint();
+		panel.setVisible(true);
+		frame.revalidate();
 		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent event) {
-		Frame frame = null;
+		frame.getContentPane().removeAll();
 		
 		if(event.getSource() == mntmCrearComunidad){
-			 new ComunidadForm();
+			panel = new ComunidadForm();
+			
 		} else if(event.getSource() == mntmConsultarComunidades){
 			
 		}else if(event.getSource() == mntmCrearCuentaBancaria){
-			
+			panel = new BancoForm();
 		}else if(event.getSource() == mntmConsultarCuentas){
 			
 		}else if(event.getSource() == mntmCrearCuota){
@@ -153,6 +164,9 @@ public class VentanaPrincipal implements ActionListener{
 			
 		}
 		
+		frame.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setVisible(true);
+		frame.revalidate();
 	}
 
 }
