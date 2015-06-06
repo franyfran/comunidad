@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name = "CUENTA_BANCO")
-public class CuentaBanco implements Serializable{
+public class Banco implements Serializable{
 	/**
 	 * 
 	 */
@@ -31,11 +31,11 @@ public class CuentaBanco implements Serializable{
 	@Column (name="NUMERO_CUENTA")
 	private String numeroCuenta;
 	
-	public CuentaBanco() {
+	public Banco() {
 		super();
 	}
 
-	public CuentaBanco(String nombreBanco, String sucursal, String numeroCuenta) {
+	public Banco(String nombreBanco, String sucursal, String numeroCuenta) {
 		super();
 		this.nombreBanco = nombreBanco;
 		this.sucursal = sucursal;
@@ -93,7 +93,7 @@ public class CuentaBanco implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CuentaBanco other = (CuentaBanco) obj;
+		Banco other = (Banco) obj;
 		if (idCuentaBanco == null) {
 			if (other.idCuentaBanco != null)
 				return false;
@@ -104,9 +104,7 @@ public class CuentaBanco implements Serializable{
 
 	@Override
 	public String toString() {
-		return "CuentaBanco [idCuentaBanco=" + idCuentaBanco + ", nombreBanco="
-				+ nombreBanco + ", sucursal=" + sucursal + ", numeroCuenta="
-				+ numeroCuenta + "]";
+		return this.getNombreBanco() + " " + this.getSucursal() + " " + this.getNumeroCuenta();
 	}
 
 	

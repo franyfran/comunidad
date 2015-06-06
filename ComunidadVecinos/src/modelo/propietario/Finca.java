@@ -10,29 +10,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "FINCA")
 public class Finca {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name="ID_FINCA")
+	@Column(name = "ID_FINCA")
 	private Integer idFinca;
-	
+
 	@Column(name = "PLANTA")
 	private Integer planta;
-	
+
 	@Column(name = "PUERTA")
-	private Character puerta;
+	private String puerta;
 
 	public Finca() {
 		super();
 	}
 
-	public Finca(int planta, char puerta) {
+	public Finca(int planta, String puerta) {
 		super();
 		this.planta = planta;
 		this.puerta = puerta;
-		
+
 	}
-	
+
 	public int getPlanta() {
 		return planta;
 	}
@@ -41,11 +41,11 @@ public class Finca {
 		this.planta = planta;
 	}
 
-	public char getPuerta() {
+	public String getPuerta() {
 		return puerta;
 	}
 
-	public void setPuerta(char puerta) {
+	public void setPuerta(String puerta) {
 		this.puerta = puerta;
 	}
 
@@ -59,10 +59,6 @@ public class Finca {
 
 	public void setPlanta(Integer planta) {
 		this.planta = planta;
-	}
-
-	public void setPuerta(Character puerta) {
-		this.puerta = puerta;
 	}
 
 	@Override
@@ -92,11 +88,7 @@ public class Finca {
 
 	@Override
 	public String toString() {
-		return "Finca [idFinca=" + idFinca + ", planta=" + planta + ", puerta="
-				+ puerta + "]";
+		return "Planta " + planta + " Puerta " + puerta;
 	}
 
-	
-	
-	
 }

@@ -13,42 +13,48 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CUOTA")
-public class Cuota implements Serializable{
-	
+public class Cuota implements Serializable {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2021988168204508605L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column (name="ID_CUOTA")
+	@Column(name = "ID_CUOTA")
 	private Integer idCuota;
-	
+
 	@Column(name = "IMPORTE")
 	private double importe;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private Periodicidad periodo;
-	
+
 	public double getImporte() {
 		return importe;
 	}
+
 	public void setImporte(double cuota) {
 		this.importe = cuota;
 	}
+
 	public Integer getIdCuota() {
 		return idCuota;
 	}
+
 	public void setIdCuota(Integer idCuota) {
 		this.idCuota = idCuota;
 	}
+
 	public Periodicidad getPeriodo() {
 		return periodo;
 	}
+
 	public void setPeriodo(Periodicidad periodo) {
 		this.periodo = periodo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -56,6 +62,7 @@ public class Cuota implements Serializable{
 		result = prime * result + ((idCuota == null) ? 0 : idCuota.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -72,10 +79,10 @@ public class Cuota implements Serializable{
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Cuota [idCuota=" + idCuota + ", importe=" + importe
-				+ ", periodo=" + periodo + "]";
+		return importe + "€  " + periodo;
 	}
-	
+
 }

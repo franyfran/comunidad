@@ -60,75 +60,69 @@ public class Propietario implements Serializable {
 		super();
 	}
 
-	public Propietario(Finca finca,
-			String nombrePropietario, String apellidosPropietario) {
-		this();
-		this.finca = finca;
-		this.nombrePropietario = nombrePropietario;
-		this.apellidosPropietario = apellidosPropietario;
+	
+	public void setIdPropietario(Integer idPropietario) {
+		this.idPropietario = idPropietario;
 	}
-
+	
 	public Integer getIdPropietario() {
 		return idPropietario;
+	}
+	
+	public void setFinca(Finca finca) {
+		this.finca = finca;
 	}
 	
 	public Finca getFinca() {
 		return finca;
 	}
 
-	public void setFinca(Finca finca) {
-		this.finca = finca;
+	public void setNombrePropietario(String nombrePropietario) {
+		this.nombrePropietario = nombrePropietario;
 	}
 
 	public String getNombrePropietario() {
 		return nombrePropietario;
 	}
 
-	public void setNombrePropietario(String nombrePropietario) {
-		this.nombrePropietario = nombrePropietario;
+	public void setApellidosPropietario(String apellidosPropietario) {
+		this.apellidosPropietario = apellidosPropietario;
 	}
 
 	public String getApellidosPropietario() {
 		return apellidosPropietario;
 	}
 
-	public void setApellidosPropietario(String apellidosPropietario) {
-		this.apellidosPropietario = apellidosPropietario;
-	}
-	public List<Recibo> getRecibos() {
-		return recibos;
-	}
-
 	public void setRecibos(List<Recibo> recibos) {
 		this.recibos = recibos;
 	}
-
-	public Comunidad getComunidad() {
-		return comunidad;
+	
+	public List<Recibo> getRecibos() {
+		return recibos;
 	}
 
 	public void setComunidad(Comunidad comunidad) {
 		this.comunidad = comunidad;
 	}
 
-	public void setIdPropietario(Integer idPropietario) {
-		this.idPropietario = idPropietario;
-	}
-	
-	public Cuota getCuota() {
-		return cuota;
+	public Comunidad getComunidad() {
+		return comunidad;
 	}
 
 	public void setCuota(Cuota cuota) {
 		this.cuota = cuota;
 	}
 
-	public String getTelefono() {
-		return telefono;
+	public Cuota getCuota() {
+		return cuota;
 	}
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public String getTelefono() {
+		return telefono;
 	}
 
 	@Override

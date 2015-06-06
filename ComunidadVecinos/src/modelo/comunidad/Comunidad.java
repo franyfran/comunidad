@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import modelo.bancario.CuentaBanco;
+import modelo.bancario.Banco;
 import modelo.propietario.Propietario;
 
 @Entity
@@ -35,11 +35,17 @@ public class Comunidad implements Serializable{
 	@Column (name="NOMBRE_EDIFICIO")
 	private String nombreEdificio;
 	
-	@Column (name="DIRECCION")
-	private String direccion ;
+	@Column (name="CALLE")
+	private String calle ;
+	
+	@Column (name="NUMERO")
+	private String numero ;
+	
+	@Column (name="PUERTA")
+	private String puerta;
 	
 	@Column (name="POBLACION")
-	private String poblacion;
+	private String poblacion ;
 	
 	@Column (name="CODIGO_POSTAL")
 	private String codigoPostal;
@@ -52,32 +58,15 @@ public class Comunidad implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_CUENTA_BANCO")
-	private CuentaBanco cuentaBanco;
+	private Banco cuentaBanco;
 	
 	public Comunidad() {
 		super();
 		
 	}
 
-	public Comunidad(String nombreEdificio, String direccion, String poblacion,
-			String codigoPostal, String provincia,
-			List<Propietario> propietarios, CuentaBanco cuentaBanco) {
-		super();
-		this.nombreEdificio = nombreEdificio;
-		this.direccion = direccion;
-		this.poblacion = poblacion;
-		this.codigoPostal = codigoPostal;
-		this.provincia = provincia;
-		this.propietarios = propietarios;
-		this.cuentaBanco = cuentaBanco;
-	}
-
 	public Integer getIdComunidad() {
 		return idComunidad;
-	}
-
-	public void setIdComunidad(Integer idComunidad) {
-		this.idComunidad = idComunidad;
 	}
 
 	public String getNombreEdificio() {
@@ -88,12 +77,28 @@ public class Comunidad implements Serializable{
 		this.nombreEdificio = nombreEdificio;
 	}
 
-	public String getDireccion() {
-		return direccion;
+	public String getCalle() {
+		return calle;
 	}
 
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public String getPuerta() {
+		return puerta;
+	}
+
+	public void setPuerta(String puerta) {
+		this.puerta = puerta;
 	}
 
 	public String getPoblacion() {
@@ -128,50 +133,20 @@ public class Comunidad implements Serializable{
 		this.propietarios = propietarios;
 	}
 
-	public CuentaBanco getCuentaBanco() {
+	public Banco getCuentaBanco() {
 		return cuentaBanco;
 	}
 
-	public void setCuentaBanco(CuentaBanco cuentaBanco) {
+	public void setCuentaBanco(Banco cuentaBanco) {
 		this.cuentaBanco = cuentaBanco;
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((idComunidad == null) ? 0 : idComunidad.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Comunidad other = (Comunidad) obj;
-		if (idComunidad == null) {
-			if (other.idComunidad != null)
-				return false;
-		} else if (!idComunidad.equals(other.idComunidad))
-			return false;
-		return true;
-	}
-
-	@Override
 	public String toString() {
-		return "Comunidad [idComunidad=" + idComunidad + ", nombreEdificio="
-				+ nombreEdificio + ", direccion=" + direccion + ", poblacion="
-				+ poblacion + ", codigoPostal=" + codigoPostal + ", provincia="
-				+ provincia + ", propietarios=" + propietarios
-				+ ", cuentaBanco=" + cuentaBanco + "]";
+		return nombreEdificio;
 	}
+	
+	
 
-	
-	
 	
 }
