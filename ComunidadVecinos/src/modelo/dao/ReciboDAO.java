@@ -28,10 +28,10 @@ public class ReciboDAO {
 	}
 
 	
-	public void baja(Integer idRecibo) 
+	public void baja(Integer numRecibo) 
 	{
 		em.getTransaction().begin();
-		Recibo r = em.find(Recibo.class, idRecibo);
+		Recibo r = em.find(Recibo.class, numRecibo);
 		em.remove(r);
 		em.getTransaction().commit();
 	}
@@ -45,10 +45,10 @@ public class ReciboDAO {
 	}
 
 	
-	public Recibo consulta(Integer idRecibo) 
+	public Recibo consulta(Integer numRecibo) 
 	{
 		em.getTransaction().begin();		
-		Recibo r = em.find(Recibo.class, idRecibo);
+		Recibo r = em.find(Recibo.class, numRecibo);
 		em.getTransaction().commit();
 		return r;
 	}
@@ -62,6 +62,14 @@ public class ReciboDAO {
 		List<Recibo> recibos = query.getResultList();
 		em.getTransaction().commit();
 	    return recibos;
+	}
+	
+	public List<Recibo> obtenerRecibosPendientes(Integer idComunidad){
+		/* TODO: Hacer consulta a BD para obtener los recibos de la comunidad con el identificador que llega
+		 * por parametro que tengan el campo pagado a false */
+		
+		
+		return null;
 	}
 
 }

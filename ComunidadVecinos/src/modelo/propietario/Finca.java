@@ -5,7 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import modelo.comunidad.Comunidad;
 
 @Entity
 @Table(name = "FINCA")
@@ -21,6 +25,10 @@ public class Finca {
 
 	@Column(name = "PUERTA")
 	private String puerta;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_COMUNIDAD")
+	private Comunidad comunidad;
 
 	public Finca() {
 		super();
@@ -61,6 +69,14 @@ public class Finca {
 		this.planta = planta;
 	}
 
+	public Comunidad getComunidad() {
+		return comunidad;
+	}
+
+	public void setComunidad(Comunidad comunidad) {
+		this.comunidad = comunidad;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,7 +104,7 @@ public class Finca {
 
 	@Override
 	public String toString() {
-		return "Planta " + planta + " Puerta " + puerta;
+		return planta +  puerta;
 	}
 
 }

@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import modelo.bancario.Banco;
+import modelo.propietario.Finca;
 import modelo.propietario.Propietario;
 
 @Entity
@@ -40,9 +41,6 @@ public class Comunidad implements Serializable{
 	
 	@Column (name="NUMERO")
 	private String numero ;
-	
-	@Column (name="PUERTA")
-	private String puerta;
 	
 	@Column (name="POBLACION")
 	private String poblacion ;
@@ -91,14 +89,6 @@ public class Comunidad implements Serializable{
 
 	public void setNumero(String numero) {
 		this.numero = numero;
-	}
-
-	public String getPuerta() {
-		return puerta;
-	}
-
-	public void setPuerta(String puerta) {
-		this.puerta = puerta;
 	}
 
 	public String getPoblacion() {

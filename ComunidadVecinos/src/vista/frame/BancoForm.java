@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import modelo.bancario.Banco;
 import modelo.dao.BancoDAO;
 
-public class BancoForm extends JPanel{
+public class BancoForm extends JPanel implements ActionListener{
 
 	/**
 	 * 
@@ -68,10 +68,7 @@ public class BancoForm extends JPanel{
 		this.add(tfCuenta);
 
 		btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCancelar.addActionListener(this);
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCancelar.setBounds(110, 171, 90, 25);
 		this.add(btnCancelar);
@@ -98,5 +95,11 @@ public class BancoForm extends JPanel{
 		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAceptar.setBounds(234, 171, 90, 25);
 		this.add(btnAceptar);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.setVisible(false);
+		this.revalidate();
 	}
 }

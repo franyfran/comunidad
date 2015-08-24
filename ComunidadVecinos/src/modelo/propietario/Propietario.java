@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import modelo.bancario.Banco;
 import modelo.comunidad.Comunidad;
 import modelo.contabilidad.Recibo;
 
@@ -55,6 +56,10 @@ public class Propietario implements Serializable {
 	
 	@OneToMany(mappedBy = "propietario",cascade=CascadeType.ALL)
 	private List<Recibo> recibos;
+	
+	@ManyToOne
+	@JoinColumn(name = "ID_CUENTA_BANCO")
+	private Banco cuentaBanco;
 	
 	public Propietario() {
 		super();
@@ -125,6 +130,16 @@ public class Propietario implements Serializable {
 		return telefono;
 	}
 
+	public Banco getCuentaBanco() {
+		return cuentaBanco;
+	}
+
+
+	public void setCuentaBanco(Banco cuentaBanco) {
+		this.cuentaBanco = cuentaBanco;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -151,15 +166,13 @@ public class Propietario implements Serializable {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Propietario [idPropietario=" + idPropietario
-				+ ", nombrePropietario=" + nombrePropietario
-				+ ", apellidosPropietario=" + apellidosPropietario
-				+ ", telefono=" + telefono + ", cuota=" + cuota
-				+ ", comunidad=" + comunidad + ", finca=" + finca
-				+ ", recibos=" + recibos + "]";
+		return this.nombrePropietario + " " + this.apellidosPropietario;
 	}
+
+	
 	
 	
 	

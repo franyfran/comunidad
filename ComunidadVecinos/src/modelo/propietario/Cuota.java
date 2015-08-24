@@ -30,6 +30,10 @@ public class Cuota implements Serializable {
 
 	@Enumerated(EnumType.ORDINAL)
 	private Periodicidad periodo;
+	
+	public Cuota(){
+		super();
+	}
 
 	public double getImporte() {
 		return importe;

@@ -1,6 +1,5 @@
 package vista.frame;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +7,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,11 +22,13 @@ public class ComunidadForm extends JPanel implements ActionListener{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 32052937542943884L;
+	private static final long serialVersionUID = -7645320240949909015L;
+	/**
+	 * 
+	 */
 	private JTextField nombreEdificio;
 	private JTextField nombreCalle;
 	private JTextField numero;
-	private JTextField puerta;
 	private JTextField poblacion;
 	private JTextField codigoPostal;
 	private JTextField provincia;
@@ -50,23 +50,18 @@ public class ComunidadForm extends JPanel implements ActionListener{
 
 		JLabel label = new JLabel("Nombre de Edificio:");
 		label.setFont(new Font("Tahoma", Font.BOLD, 11));
-		label.setBounds(10, 20, 115, 20);
+		label.setBounds(10, 55, 115, 20);
 		this.add(label);
 
 		JLabel lblCalle = new JLabel("Calle:");
 		lblCalle.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblCalle.setBounds(10, 55, 115, 20);
+		lblCalle.setBounds(10, 90, 115, 20);
 		this.add(lblCalle);
 
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNmero.setBounds(10, 90, 115, 20);
+		lblNmero.setBounds(10, 125, 115, 20);
 		this.add(lblNmero);
-
-		JLabel lblPlantaPuerta = new JLabel("Puerta:");
-		lblPlantaPuerta.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblPlantaPuerta.setBounds(10, 125, 115, 20);
-		this.add(lblPlantaPuerta);
 
 		JLabel lblPoblacin = new JLabel("Poblaci\u00F3n:");
 		lblPoblacin.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -94,7 +89,6 @@ public class ComunidadForm extends JPanel implements ActionListener{
 					comunidad.setNumero(numero.getText());
 					comunidad.setPoblacion(poblacion.getText());
 					comunidad.setProvincia(provincia.getText());
-					comunidad.setPuerta(puerta.getText());
 					comunidad.setCuentaBanco((Banco) listaBancos.getSelectedItem());
 					ComunidadDAO cdao = new ComunidadDAO();
 					cdao.alta(comunidad);
@@ -112,7 +106,6 @@ public class ComunidadForm extends JPanel implements ActionListener{
 				return (!nombreEdificio.getText().isEmpty()
 						&& !nombreCalle.getText().isEmpty()
 						&& !numero.getText().isEmpty()
-						&& !puerta.getText().isEmpty()
 						&& !poblacion.getText().isEmpty()
 						&& !codigoPostal.getText().isEmpty() && !provincia
 						.getText().isEmpty() && listaBancos.getSelectedItem() != null);
@@ -123,24 +116,19 @@ public class ComunidadForm extends JPanel implements ActionListener{
 		this.add(btnAceptar);
 
 		nombreEdificio = new JTextField();
-		nombreEdificio.setBounds(130, 20, 194, 20);
+		nombreEdificio.setBounds(130, 55, 194, 20);
 		this.add(nombreEdificio);
 		nombreEdificio.setColumns(10);
 
 		nombreCalle = new JTextField();
 		nombreCalle.setColumns(10);
-		nombreCalle.setBounds(130, 55, 194, 20);
+		nombreCalle.setBounds(130, 90, 194, 20);
 		this.add(nombreCalle);
 
 		numero = new JTextField();
 		numero.setColumns(10);
-		numero.setBounds(130, 90, 194, 20);
+		numero.setBounds(130, 125, 194, 20);
 		this.add(numero);
-
-		puerta = new JTextField();
-		puerta.setColumns(10);
-		puerta.setBounds(130, 125, 194, 20);
-		this.add(puerta);
 
 		poblacion = new JTextField();
 		poblacion.setColumns(10);
@@ -157,7 +145,7 @@ public class ComunidadForm extends JPanel implements ActionListener{
 		provincia.setBounds(130, 230, 194, 20);
 		this.add(provincia);
 
-		JLabel lblBanco = new JLabel("Banco:");
+		JLabel lblBanco = new JLabel("Cuenta Bancaria:");
 		lblBanco.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblBanco.setBounds(10, 268, 115, 20);
 		this.add(lblBanco);
@@ -185,7 +173,7 @@ public class ComunidadForm extends JPanel implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 		this.revalidate();
 		

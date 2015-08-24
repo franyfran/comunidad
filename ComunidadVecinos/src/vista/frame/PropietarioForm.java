@@ -1,6 +1,5 @@
 package vista.frame;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,12 +7,14 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import modelo.bancario.Banco;
 import modelo.comunidad.Comunidad;
+import modelo.dao.BancoDAO;
 import modelo.dao.ComunidadDAO;
 import modelo.dao.CuotaDAO;
 import modelo.dao.FincaDAO;
@@ -22,9 +23,11 @@ import modelo.propietario.Cuota;
 import modelo.propietario.Finca;
 import modelo.propietario.Propietario;
 
-public class PropietarioForm {
-
-	private JFrame frame;
+public class PropietarioForm extends JPanel implements ActionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7266154933143321042L;
 	private JTextField tfNombre;
 	private JTextField tfApellidos;
 	private JTextField tfTelefono;
@@ -32,22 +35,9 @@ public class PropietarioForm {
 	private JComboBox<Cuota> cbCuota;
 	private JComboBox<Comunidad> cbComunidad;
 	private JComboBox<Finca> cbFinca;
+	private JComboBox<Banco> cbBanco;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PropietarioForm window = new PropietarioForm();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -57,59 +47,63 @@ public class PropietarioForm {
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the this.
 	 */
 	private void initialize() {
-		frame = new JFrame("Alta Propietario");
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		
+		this.setBounds(100, 100, 450, 300);
+		this.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Nombre:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblNewLabel.setBounds(10, 20, 115, 20);
-		frame.getContentPane().add(lblNewLabel);
+		this.add(lblNewLabel);
 
 		JLabel label = new JLabel("Apellidos:");
 		label.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label.setBounds(10, 55, 115, 20);
-		frame.getContentPane().add(label);
+		this.add(label);
 
 		JLabel label_1 = new JLabel("Teléfono:");
 		label_1.setFont(new Font("Tahoma", Font.BOLD, 11));
 		label_1.setBounds(10, 90, 115, 20);
-		frame.getContentPane().add(label_1);
+		this.add(label_1);
 
 		JLabel lblCuota = new JLabel("Cuota:");
 		lblCuota.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblCuota.setBounds(10, 125, 115, 20);
-		frame.getContentPane().add(lblCuota);
+		this.add(lblCuota);
 
 		JLabel lblComunidad = new JLabel("Comunidad:");
 		lblComunidad.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblComunidad.setBounds(10, 160, 115, 20);
-		frame.getContentPane().add(lblComunidad);
+		this.add(lblComunidad);
 
 		JLabel lblFinca = new JLabel("Finca:");
 		lblFinca.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblFinca.setBounds(10, 195, 115, 20);
-		frame.getContentPane().add(lblFinca);
+		this.add(lblFinca);
+		
+		JLabel lblCuentaBanco = new JLabel("Cuenta Bancaria:");
+		lblCuentaBanco.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblCuentaBanco.setBounds(10, 230, 115, 20);
+		this.add(lblCuentaBanco);
 
 		tfNombre = new JTextField();
 		tfNombre.setBounds(130, 20, 194, 20);
-		frame.getContentPane().add(tfNombre);
+		this.add(tfNombre);
 		// textField.setColumns(10);
 
 		tfApellidos = new JTextField();
 		tfApellidos.setColumns(10);
 		tfApellidos.setBounds(130, 55, 194, 20);
-		frame.getContentPane().add(tfApellidos);
+		this.add(tfApellidos);
 
 		tfTelefono = new JTextField();
 		tfTelefono.setColumns(10);
 		tfTelefono.setBounds(130, 90, 194, 20);
-		frame.getContentPane().add(tfTelefono);
-
+		this.add(tfTelefono);
+		
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -118,7 +112,8 @@ public class PropietarioForm {
 						&& !tfTelefono.getText().isEmpty()
 						&& cbComunidad.getSelectedItem() != null
 						&& cbCuota.getSelectedItem() != null
-						&& cbFinca.getSelectedItem() != null) {
+						&& cbFinca.getSelectedItem() != null
+						&& cbBanco.getSelectedItem() != null) {
 					Propietario propietario = new Propietario();
 					propietario.setApellidosPropietario(tfApellidos.getText());
 					propietario.setNombrePropietario(tfNombre.getText());
@@ -126,6 +121,7 @@ public class PropietarioForm {
 					propietario.setComunidad((Comunidad)cbComunidad.getSelectedItem());
 					propietario.setCuota((Cuota)cbCuota.getSelectedItem());
 					propietario.setFinca((Finca)cbFinca.getSelectedItem());
+					propietario.setCuentaBanco((Banco) cbBanco.getSelectedItem());
 					PropietarioDAO pDAO = new PropietarioDAO();
 					pDAO.alta(propietario);
 					if(propietario.getIdPropietario() != null){
@@ -140,32 +136,35 @@ public class PropietarioForm {
 		});
 		btnAceptar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnAceptar.setBounds(334, 138, 90, 25);
-		frame.getContentPane().add(btnAceptar);
+		this.add(btnAceptar);
 
 		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnCancelar.addActionListener(this);
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnCancelar.setBounds(334, 194, 90, 25);
-		frame.getContentPane().add(btnCancelar);
+		this.add(btnCancelar);
 
 		cbCuota = new JComboBox<Cuota>();
 		cbCuota.setBounds(130, 125, 183, 20);
-		frame.getContentPane().add(cbCuota);
+		this.add(cbCuota);
 		cargarCuota();
 
 		cbComunidad = new JComboBox<Comunidad>();
 		cbComunidad.setBounds(130, 160, 183, 20);
-		frame.getContentPane().add(cbComunidad);
+		this.add(cbComunidad);
 		cargarComunidad();
 
 		cbFinca = new JComboBox<Finca>();
 		cbFinca.setBounds(130, 195, 183, 20);
-		frame.getContentPane().add(cbFinca);
+		this.add(cbFinca);
 		cargarFinca();
-		frame.setLocationRelativeTo(null);
+		
+		cbBanco = new JComboBox<Banco>();
+		cbBanco.setBounds(130, 230, 194, 20);
+		this.add(cbBanco);
+		cargarBanco();
+		
+
 	}
 
 	void cargarCuota() {
@@ -190,5 +189,20 @@ public class PropietarioForm {
 		for (Comunidad co : comunidades) {
 			cbComunidad.addItem(co);
 		}
+	}
+	
+	void cargarBanco(){
+		BancoDAO bancoDao = new BancoDAO();
+		List<Banco> bancos = bancoDao.consultaAll();
+		for(Banco banco : bancos){
+			cbBanco.addItem(banco);
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		this.setVisible(false);
+		this.revalidate();
+		
 	}
 }
